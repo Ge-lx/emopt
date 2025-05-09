@@ -111,11 +111,10 @@ void fdtd::FDTD::set_field_arrays(double *Ex, double *Ey, double *Ez,
     _Hx = Hx; _Hy = Hy; _Hz = Hz;
 }
 
-void fdtd::FDTD::set_mat_arrays(complex128 *eps_x, complex128 *eps_y, complex128 *eps_z,
-                                complex128 *mu_x, complex128 *mu_y, complex128 *mu_z)
+void fdtd::FDTD::set_mat_arrays(complex128 *eps_x, complex128 *eps_y, complex128 *eps_z)
 {
     _eps_x = eps_x; _eps_y = eps_y; _eps_z = eps_z;
-    _mu_x = mu_x; _mu_y = mu_y; _mu_z = mu_z;
+    // _mu_x = mu_x; _mu_y = mu_y; _mu_z = mu_z;
 }
 
 void fdtd::FDTD::update_H(int n, double t)
@@ -1663,10 +1662,9 @@ void FDTD_set_field_arrays(fdtd::FDTD* fdtd,
 }
 
 void FDTD_set_mat_arrays(fdtd::FDTD* fdtd,
-                         complex128 *eps_x, complex128 *eps_y, complex128 *eps_z,
-                         complex128 *mu_x, complex128 *mu_y, complex128 *mu_z)
+                         complex128 *eps_x, complex128 *eps_y, complex128 *eps_z)
 {
-    fdtd->set_mat_arrays(eps_x, eps_y, eps_z, mu_x, mu_y, mu_z);
+    fdtd->set_mat_arrays(eps_x, eps_y, eps_z);
 }
 
 void FDTD_update_H(fdtd::FDTD* fdtd, int n, double t)

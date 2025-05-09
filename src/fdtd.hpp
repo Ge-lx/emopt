@@ -2,6 +2,7 @@
 #include <memory>
 #include <vector>
 #include <complex>
+#include <thrust/complex.h> // This import provides dim3 type
 
 #ifndef __FDTD_HPP__
 #define __FDTD_HPP__

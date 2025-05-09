@@ -17,6 +17,7 @@ endif
 CXXFLAGS = -Wall -fopenmp -O3 -march=native -DNDEBUG -std=c++11
 
 INCLUDES = -I${EIGEN_DIR} -I${BOOST_DIR} -I/usr/include/eigen3
+INCLUDE_CUDA = -I/usr/local/cuda/include/
 LDFLAGS = -lpthread
 
 all: Grid.o Grid_ctypes.o FDTD.o Grid.cpp Grid.hpp Grid_ctypes.cpp Grid_ctypes.hpp fdtd.cpp fdtd.hpp
@@ -32,7 +33,7 @@ Grid_ctypes.o: Grid.cpp Grid.hpp Grid_ctypes.cpp Grid_ctypes.hpp
 	${CC} -c -fPIC Grid_ctypes.cpp ${CXXFLAGS} -o Grid_ctypes.o ${INCLUDES}
 
 FDTD.o: fdtd.cpp fdtd.hpp
-	${CC} -c -fPIC fdtd.cpp ${CXXFLAGS} -o FDTD.o
+	${CC} -c -fPIC fdtd.cpp ${CXXFLAGS} -o FDTD.o ${INCLUDES} ${INCLUDE_CUDA}
 
 clean:
 	rm -f ./*.o
