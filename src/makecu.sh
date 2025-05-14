@@ -31,7 +31,9 @@ g++ -shared -fopenmp -fPIC -o Grid.so Grid.o Grid_CUDA.o -lpthread -lrt -ldl -L/
 echo "Copying objects..."
 
 # Kinda fragile, but not the worst of it
-EMOPT_PKG_PATH=$(pip3 show emopt | sed 's/\n/\n/g' | sed '8q;d' | sed 's/ /\n/g' | sed '2q;d')
+# We use python3.9 pip explicitly here, since this hosts all dependencies
+# python3 (and by extension pip3) points to python3.8 for compatibility with petsc build scripts
+EMOPT_PKG_PATH=$(python3.9 -m pip show emopt | sed 's/\n/\n/g' | sed '8q;d' | sed 's/ /\n/g' | sed '2q;d')
 EMOPTPATH="$EMOPT_PKG_PATH/emopt/"
 
 echo "Copying shared objects to $EMOPTPATH"
