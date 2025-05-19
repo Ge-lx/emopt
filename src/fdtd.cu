@@ -2965,8 +2965,8 @@ void fdtd::FDTD::solve()
                                 *A_change = 1;
                                 *phi_change = 1;
                             }else{
-                                *A_change = norm2(A1, A0, _Nconv)/norm2(A0, _Nconv);
-                                *phi_change = norm2(phi1, phi0, _Nconv)/norm2(phi0, _Nconv);
+                                *A_change = norm2(A1, A0, _Nconv)/(norm2(A0, _Nconv) + 1e-31);
+                                *phi_change = norm2(phi1, phi0, _Nconv)/(norm2(phi0, _Nconv) + 1e-31);
                             }
                             auto timenow = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
                             std::cout << "Step:" << step << ", A_change:" << *A_change << ", phi_change:" << *phi_change << ", Time:" << ctime(&timenow);
