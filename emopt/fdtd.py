@@ -442,7 +442,7 @@ class FDTD(MaxwellSolver):
 
     @property
     def wavelength(self):
-        self._wavelength = wavelength
+        return self._wavelength
 
     @wavelength.setter
     def wavelength(self, wlen):
